@@ -20,12 +20,12 @@ services:
       - key: PYTHON_VERSION
         value: 3.12.2
 
-staticSites:
   # Frontend Static React App
-  - name: prioritize-frontend
+  - type: static
+    name: prioritize-frontend
     rootDir: frontend
     buildCommand: npm install && npm run build
-    publishPath: dist
+    staticPublishPath: dist
     envVars:
       - key: VITE_API_URL
         fromService:
