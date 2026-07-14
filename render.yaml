@@ -29,9 +29,7 @@ services:
     staticPublishPath: dist
     envVars:
       - key: VITE_API_URL
-        fromService:
-          name: prioritize-backend
-          property: url
+        value: https://prioritize-backend.onrender.com/api
 
 databases:
   - name: prioritize-db
