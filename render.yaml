@@ -8,9 +8,10 @@ services:
     startCommand: alembic upgrade head && uvicorn app.main:app --host 0.0.0.0 --port $PORT
     envVars:
       - key: DATABASE_URL
-        fromDatabase:
-          name: prioritize-db
-          property: connectionString
+        sync: false
+        # Note: Set this value to your free Neon/Supabase PostgreSQL connection string
+        # You can also change this value in the Render dashboard after creating the service.
+        value: postgresql://change_me_to_your_database_url
       - key: SECRET_KEY
         generateValue: true
       - key: ALGORITHM
@@ -30,7 +31,3 @@ services:
     envVars:
       - key: VITE_API_URL
         value: https://prioritize-backend.onrender.com/api
-
-databases:
-  - name: prioritize-db
-    plan: free
